@@ -1,8 +1,15 @@
 package lesson2;
 
+import java.io.DataOutputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
+
+/*
+/цена PRODUCT1234
+/newprice PRODUCT1234 100
+/товарыценой 100 500
+*/
 
 public class Start {
 
@@ -26,11 +33,11 @@ public class Start {
                         System.out.println("Такого товара нет");
                     } else {
 //                        while (resultSet.next()) {
-                        System.out.println("resultnext true");
                         System.out.println("цена: " + resultSet.getString(1));
                     }
                 } else if (string.startsWith("/newprice")) {
                     SessionData.newPrice(string);
+                    System.out.println("цена изменина");
 
                 } else if (string.startsWith("/товарыценой")) {
                     ResultSet rs = SessionData.searchRangeProducts(string);
@@ -39,8 +46,8 @@ public class Start {
 //                    } else {
                     Boolean flag = false;//todo
                     while (rs.next()) {
-                        System.out.println("resultnext true");
-                        System.out.println("Найденные товары: " + rs.getString(1));
+                        System.out.println("Найденные товары: " + rs.getString(1)+ " по цене "
+                                + rs.getString(2));
                         flag = true;//костыль
                     }
                     if (rs.next() == false && flag == false) {

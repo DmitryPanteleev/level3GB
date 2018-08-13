@@ -63,7 +63,7 @@ public class SessionData {
         String[] strings = productRange.split(" ", 3);
         String price1 = strings[1];
         String price2 = strings[2];
-        String sql = String.format("SELECT title FROM products WHERE cost >= '%S' AND cost <= '%S' ;", price1, price2);
+        String sql = String.format("SELECT title, cost FROM products WHERE cost >= '%S' AND cost <= '%S' ;", price1, price2);
         System.out.println(sql);
         ResultSet rs = stmt.executeQuery(sql);
         return rs;
