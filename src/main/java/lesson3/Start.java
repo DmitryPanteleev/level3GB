@@ -19,30 +19,41 @@ public class Start {
     }
 
     static void writeByteMass(String path) {
-
-        try (FileInputStream in = new FileInputStream(path)){
+        long start = System.currentTimeMillis();
+        try (FileInputStream in = new FileInputStream(path)) {
             byte[] arr = new byte[60];
             int x;
-            while ((x = in.read(arr)) != -1){
-                System.out.println(new String(arr,0,x));
-            };
-        }catch (IOException e){
+            while ((x = in.read(arr)) != -1) {
+                System.out.println(new String(arr, 0, x));
+            }
+            ;
+        } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println();
+        System.out.println(System.currentTimeMillis() - start + " миллесекунд выполнялось первое задание");
     }
 
     static void writeManyMass(String... path) throws Exception {
+        long start = System.currentTimeMillis();
         ArrayList<InputStream> arr = new ArrayList<>();
         for (int i = 0; i < path.length; i++) {
             arr.add(new FileInputStream(path[i]));
         }
         SequenceInputStream in = new SequenceInputStream(Collections.enumeration(arr));
         int x;
-        while ((x = in.read()) != -1){
+        while ((x = in.read()) != -1) {
             System.out.print((char) x);
         }
         in.close();
+        System.out.println();
+        System.out.println(System.currentTimeMillis() - start + " миллесекунд выполнялось второе задание");
     }
 
+    static void writeBigFile() {
+        long start = System.currentTimeMillis();
 
+        System.out.println();
+        System.out.println(System.currentTimeMillis() - start + " миллесекунд выполнялось третье задание");
+    }
 }
