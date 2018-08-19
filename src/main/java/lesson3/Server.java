@@ -41,6 +41,7 @@ public class Server {
 //            ByteArrayOutputStream bs = new ByteArrayOutputStream();
                 ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("out.txt"));
                 oos.writeObject(student);
+                oos.flush();
 //                oos.close();
                 student.info();
             }
