@@ -9,6 +9,7 @@ public class Tunnel extends Stage {
     public void go(Car c) {
         try {
             try {
+                MainClass.semaphore.acquire();
                 System.out.println(c.getName() + " готовится к этапу(ждет): " + description);
                 System.out.println(c.getName() + " начал этап: " + description);
                 Thread.sleep(length / c.getSpeed() * 1000);
@@ -19,6 +20,8 @@ public class Tunnel extends Stage {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            MainClass.semaphore.release();
         }
     }
 }
