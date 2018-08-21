@@ -28,17 +28,16 @@ public class Client {
                 @Override
                 public void run() {
                     try {
+
                         while (true) {
-//                            String str = inputStream.readUTF();
-//                            System.out.println(str);
+//                            ByteArrayInputStream is = new ByteArrayInputStream();
                             ObjectInputStream in = new ObjectInputStream(new FileInputStream("out.txt"));
-                            Student s2 = (Student) in.readObject();
-                            s2.info();
+                            Student student = (Student) in.readObject();
+                            student.info();
+                            in.close();
                         }
-                    } catch (IOException ioe) {
+                    } catch (Exception ioe) {
                         ioe.printStackTrace();
-                    } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
                     }
                 }
             }).start();
