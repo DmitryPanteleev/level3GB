@@ -89,4 +89,13 @@ public class Task3 {
         }
         return arrayList;
     }
+
+    public void disconnect(){
+        try {
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

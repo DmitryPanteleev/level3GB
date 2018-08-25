@@ -1,4 +1,5 @@
 import lesson6.Task3;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -53,6 +54,12 @@ public class TestTask3 {
     public void testReadStudent(){
 //        25 - количество студентов в базе
         Assert.assertEquals(25, countAllStudents());
+    }
+
+    @After
+    public void disconnect(){
+        task3.disconnect();
+        System.out.println("disconnect");
     }
 
 }
